@@ -1,7 +1,7 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { pinata } from "../utils/config";
-import { uploadMetadata } from "../utils/UploadMetadata";   
+
 
 const ImageUploader = () => {
   const [image, setImage] = useState(null);
@@ -32,14 +32,17 @@ const ImageUploader = () => {
       setHash(upload.IpfsHash);
       console.log(upload.IpfsHash);
       console.log("uploading metadata");
-      handleMetadataSubmission();
     } catch (error) {
       console.log(error);
     }
   };
 
+  useEffect(() => {
+    if (hash) {
+        handleMetadataSubmission();
+    }
+  },[hash])
   const handleMetadataSubmission = async () => {
-    if(hash){
     try {
       const metadata = {
         name:name,
@@ -53,7 +56,7 @@ const ImageUploader = () => {
     } catch (error) {
       console.log(error);
     }
-}
+
   };
 
   return (
