@@ -39,7 +39,7 @@ const ImageUploader = () => {
   };
 
   const handleMetadataSubmission = async () => {
-    if(!name || !description || !hash){
+    if(!name || !description || hash){
     try {
       const metadata = {
         name:name,
