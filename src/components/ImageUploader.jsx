@@ -39,6 +39,7 @@ const ImageUploader = () => {
   };
 
   const handleMetadataSubmission = async () => {
+    if(!name || !description || !hash){
     try {
       const metadata = {
         name:name,
@@ -52,6 +53,7 @@ const ImageUploader = () => {
     } catch (error) {
       console.log(error);
     }
+}
   };
 
   return (
